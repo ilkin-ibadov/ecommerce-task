@@ -52,23 +52,17 @@
       <section class="w-[100%] max-w-[1170px] mx-auto ">
         <div class="max-w-[1170px] mt-[51px]  flex justify-between">
           <div class="flex gap-[30px]">
-            <div class="flex flex-col gap-[15px] justify-between">
-              <div class="w-[170px] h-[138px] relative flex items-center bg-[rgba(245,245,245,1)]">
-                <img src="../asserts/pd1.png" alt="Gamepad View 1" class="w-[121px] h-[114px] absolute top-[12px] left-[24.5px]  rounded-md object-cover">
+            <div id="imagescontainer" class="flex flex-col gap-4 border rounded-lg overflow-hidden">
+              
+             
+
               </div>
-              <div class="w-[170px] h-[138px] relative flex items-center bg-[rgba(245,245,245,1)]">
-                <img src="../asserts/pd2.png" alt="Gamepad View 2" class="w-[121px] h-[114px] absolute top-[12px] left-[24.5px]  rounded-md object-cover">
-              </div>
-              <div class="w-[170px] h-[138px] relative flex items-center bg-[rgba(245,245,245,1)]">
-                <img src="../asserts/pd3.png" alt="Gamepad View 3" class="w-[121px] h-[114px] absolute top-[12px] left-[24.5px]  rounded-md object-cover">
-             </div>
-                <div class="w-[170px] h-[138px] relative flex items-center bg-[rgba(245,245,245,1)]">
-                <img src="../asserts/pd4.png" alt="Gamepad View 4" class="w-[121px] h-[114px] absolute top-[12px] left-[24.5px]  rounded-md object-cover">
-              </div>
-              </div>
-            <div class="w-[500px] h-[600px]  rounded-md relative bg-[rgba(245,245,245,1)]">
-                <img src="../asserts/pd5.png" alt="Main Gamepad" class="w-[446px] h-[315px] absolute  top-[154px] left-1/2 transform -translate-x-1/2 object-cover">
+            
+              <div class="w-[470px] h-[490px] rounded-md relative object-contain bg-transparent] overflow-hidden">
+                <img id="mainimg" alt="Main Image" class="w-full h-full object-contain max-w-[470px] min-w-[460px] max-h-[490px] min-h-[489]">
             </div>
+            
+            
             
           </div>
          
@@ -80,10 +74,10 @@
              
               <span class="w-[1.25px] h-[16px] bg-gray-400 opacity-50"></span>
         
-              <span class="font-poppins font-normal text-[14px] leading-[21px] text-[#00FF66]" id="product-stock">
+              <span class="font-poppins hidden font-normal text-[14px] leading-[21px] text-[#00FF66]" id="product-stock">
                 In Stock
               </span>
-              <span class="font-poppins font-normal text-[14px] leading-[21px] text-[#DB4444]">
+              <span id="product-soldout" class="hidden font-poppins font-normal text-[14px] leading-[21px] text-[#DB4444]">
                 Sold out
               </span>
             </div>
@@ -169,9 +163,6 @@
         </div>
       </section>
 
-<<<<<<< HEAD
-      <section class="h-96"></section>
-=======
       <section class="w-[100%] max-w-[1170px] mx-auto">
         <div class="max-w-[1170px] mt-[51px]  h-[422px] flex flex-col justify-between ">
          
@@ -189,7 +180,7 @@
               <div class="h-[250px] w-[270px] p-4 flex items-center justify-center rounded-md bg-gray-100 relative overflow-hidden group">
                 <img src="../asserts/product1.png" alt="HAVIT HV-G92 Gamepad" class="w-[190px] h-[180px] object-contain">
                 
-                <!-- Hover Effekt -->
+                 
                 <div class="absolute inset-x-0 bottom-[-10px] bg-[#000000] bg-opacity-75 flex items-center justify-center translate-y-0 group-hover:translate-y-[-10px] opacity-0 group-hover:opacity-100 transition-all duration-300">
                   <button class="font-poppins font-medium text-[16px] leading-[24px] text-[#FFFFFF] bg-transparent w-[115px] h-[48px] rounded-md flex items-center justify-center">
                     Add To Basket
@@ -256,7 +247,6 @@
         </div>
       </section>
       
->>>>>>> f88c3686622508902e199bb98543a74fe1f69112
 
       <footer class="bg-black  py-24 mt-36 h-[440px]">
         <div class="container max-w-[1170px] mx-auto  flex justify-between">
