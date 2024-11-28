@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basket Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="basket.js"></script>
+</head>
+<body class="bg-gray-100">
+
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto px-8 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Exclusive</h1>
+      <input type="text" placeholder="What are you looking for?" class="border rounded-lg px-4 py-2 w-1/3">
+      <div class="flex space-x-4">
+
+        <button id="search-btn" class="p-2 rounded-full bg-gray-200">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 20L16.2223 16.2156M18.3158 11.1579C18.3158 13.0563 17.5617 14.8769 16.2193 16.2193C14.8769 17.5617 13.0563 18.3158 11.1579 18.3158C9.2595 18.3158 7.43886 17.5617 6.0965 16.2193C4.75413 14.8769 4 13.0563 4 11.1579C4 9.2595 4.75413 7.43886 6.0965 6.0965C7.43886 4.75413 9.2595 4 11.1579 4C13.0563 4 14.8769 4.75413 16.2193 6.0965C17.5617 7.43886 18.3158 9.2595 18.3158 11.1579V11.1579Z" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <button id="basket-btn" class="p-2 rounded-full bg-gray-200 relative">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.25 20.25C8.66421 20.25 9 19.9142 9 19.5C9 19.0858 8.66421 18.75 8.25 18.75C7.83579 18.75 7.5 19.0858 7.5 19.5C7.5 19.9142 7.83579 20.25 8.25 20.25Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.75 20.25C19.1642 20.25 19.5 19.9142 19.5 19.5C19.5 19.0858 19.1642 18.75 18.75 18.75C18.3358 18.75 18 19.0858 18 19.5C18 19.9142 18.3358 20.25 18.75 20.25Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2.25 3.75H5.25L7.5 16.5H19.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7.5 12.5H19.1925C19.2792 12.5001 19.3633 12.4701 19.4304 12.4151C19.4975 12.3601 19.5434 12.2836 19.5605 12.1986L20.9105 5.44859C20.9214 5.39417 20.92 5.338 20.9066 5.28414C20.8931 5.23029 20.8679 5.18009 20.8327 5.13717C20.7975 5.09426 20.7532 5.05969 20.703 5.03597C20.6528 5.01225 20.598 4.99996 20.5425 5H6" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span id="basket-count" class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+        </button>
+
+        <button id="profile-btn" class="p-2 rounded-full bg-gray-200">
+          <svg id="profile-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 27V24.3333C24 22.9188 23.5224 21.5623 22.6722 20.5621C21.8221 19.5619 20.669 19 19.4667 19H11.5333C10.331 19 9.17795 19.5619 8.32778 20.5621C7.47762 21.5623 7 22.9188 7 24.3333V27" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16.5 14C18.9853 14 21 11.9853 21 9.5C21 7.01472 18.9853 5 16.5 5C14.0147 5 12 7.01472 12 9.5C12 11.9853 14.0147 14 16.5 14Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  
+
+  <!-- Basket Section -->
+  <main class="container mx-auto px-10 py-8">
+    <!-- Row Basket and Clear All -->
+    <div class="flex justify-between items-center border-b pb-4">
+      <h2 class="text-2xl font-medium">Basket</h2>
+      <button id="clear-all" class="text-lg font-medium underline text-black">Clear All</button>
+    </div>
+
+    <!-- Basket Items Grid -->
+    <div id="basket-items" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
+    </div>
+
+    <!-- Total Price -->
+    <div class="mt-8 flex justify-end">
+      <p class="text-lg font-bold">Total Price: <span id="total-price">$0</span></p>
+    </div>
+  </main>
+
+
+    <!--Footer -->
+
+    <footer class="bg-black text-white py-10">
+      <div class="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-6">
+        <!-- Subscribe Section -->
+        <div>
+          <h4 class="text-lg font-bold mb-4">Exclusive</h4>
+          <p class="text-gray-400 mb-4">Get 10% off your first order</p>
+          <div class="flex items-center">
+            <input type="email" placeholder="Enter your email" class="p-2 rounded-l-lg w-full">
+            <button class="bg-gray-200 text-black p-2 rounded-r-lg">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
+                <path d="M4 10H16M16 10L11 15M16 10L11 5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+    
+        <!-- Support Section -->
+        <div>
+          <h4 class="text-lg font-bold mb-4">Support</h4>
+          <p class="text-gray-400">111 Bijoy Sarani, Dhaka, DH 1515, Bangladesh.</p>
+          <p class="text-gray-400 mt-2">exclusive@gmail.com</p>
+          <p class="text-gray-400 mt-2">+88015-88888-9999</p>
+        </div>
+    
+        <!-- Account Section -->
+        <div>
+          <h4 class="text-lg font-bold mb-4">Account</h4>
+          <ul class="text-gray-400 space-y-2">
+            <li><a href="account.html" class="hover:underline">My Account</a></li>
+            <li><a href="login.html" class="hover:underline">Login / Register</a></li>
+            <li><a href="basket.html" class="hover:underline">Basket</a></li>
+          </ul>
+        </div>
+    
+        <!-- Quick Link Section -->
+        <div>
+          <h4 class="text-lg font-bold mb-4">Quick Link</h4>
+          <ul class="text-gray-400 space-y-2">
+            <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+            <li><a href="#" class="hover:underline">Terms Of Use</a></li>
+          </ul>
+        </div>
+    
+        <!-- Download App Section -->
+        <div>
+          <h4 class="text-lg font-bold mb-4">Download App</h4>
+          <p class="text-gray-400 mb-1">Save $3 with App New User Only</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-0 items-center">
+            <div class="flex justify-center md:justify-start">
+              <img src="https://s3-alpha-sig.figma.com/img/9913/87c0/5dd6d44594e01b675513068803e2426d?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lH7riBAogz5-ncgy5wtuT2wDU2Mftpe80ifBPwQpHK-D0gIU7kg3n~UdAhxZX0fDOcYqfhZlVF14jHZ0MW3CRXtNztxOOZ3dXIZSrRP6hJA2xGk7oqZxopxcnq2TP2JDplkucX7aPaPjREgWTsCWdDnqbwZ9yfUWCvcs6dEdq1sCOIAaiJN6HPwS0nA0XUwFPfpWOY1TeMnP2R5wzN6Td675mb4EfUjETiOQ8M0p8wPrOjt74AJbno2gg-EdrVCFiEozzl0UFbBqTYrnOdr9nt4v-yPo5sRvFpmw0oXh6xYwdTBezj0ktkFh3U3PduzFP1higeLeyS1EYuIVMiqJug__" 
+                alt="QR Code" class="w-20 h-20">
+            </div>
+    
+            <div class="flex flex-col justify-center items-center ">
+              <a href="#" class="block">
+                <img src="https://s3-alpha-sig.figma.com/img/a61d/4c71/10b18ab55a1e1a07ebf54a46ebb07284?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=RLJrS9sTW7lsoWz-gK-qLIEmE0qNDzTtdytUvJH2mlTxC33~3xqqhNWCZexQEMLuXHvnTL~lZ9vaRK6yBrxwqU6qGvy3TFohtZVh3hIzEOMuY0hHscsK6R4UFcfvuKlMl6aH2eqhXtpY8iLIKlM6PD4MXqQWA4xzRrp455tfzZYued8e~Fnc24sdQ2drn7Nesisf1C2cH2dr0WG6YsfVM3ShmzE1-GakcKo7jSsTMNysq9U0vumW-qMet4PJ-aWIRyjuU7h-TyZ4TZWdve3~P9HwimaDJmfVSUPhXvFsEFPsPGbaahhUoQAv3p0eMB8np3UaKw1QMm7k92PEfYckGg__" 
+                  alt="Google Play" class="w-14">
+              </a>
+              <a href="#">
+                <img src="https://s3-alpha-sig.figma.com/img/3893/2d5a/ccb54c528f9bcf326ca48ea29bd6d890?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=emOhVjjoxVnHZE2AEHB1cHQS00PfQ0TKD75IWEvDbfeLkGJwJoT9CQ92jS3cgywFBhXTdJjH7bD6HbHuGHRflxEBn3gSWJKs83uzbzoWbmHAgnLnjpWjWpsvub6F9G9hmmvfbl-qvbGjOB97-uaELBQJTdBh2U4-rXSZ2Zm63u96qJ4iO7ZDnolTlL6L-JGNapEJZhraTyRl6IdDk97H~5BeemD~KGHw5r5Mc8szaDiyPAz32afs~UPMdqW58ml3R3UYvCgit3SE7J-ubSRWrRc5XdpyjrjtbjcJkLzIkLBkI-kX--9-dK0cSsIx2mytmFD4j3JptfhpccNEm0gICw__" 
+                  alt="App Store" class="w-14">
+              </a>
+            </div>
+            
+          </div>
+          <div class="flex items-center space-x-4 mt-1">
+            <a href="#" class="text-gray-400 hover:text-white">
+              <svg width="20" height="20" fill="currentColor"  viewBox="0 0 24 24">
+                <path d="M13 10H17.5L17 12H13V21H11V12H7V10H11V8.128C11 6.345 11.186 5.698 11.534 5.046C11.875 4.40181 12.4018 3.87501 13.046 3.534C13.698 3.186 14.345 3 16.128 3C16.65 3 17.108 3.05 17.5 3.15V5H16.128C14.804 5 14.401 5.078 13.99 5.298C13.686 5.46 13.46 5.686 13.298 5.99C13.078 6.401 13 6.804 13 8.128V10Z" fill="white""/>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white">
+              <svg width="20" height="20" fill="currentColor"  viewBox="0 0 24 24">
+                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.723-.951.563-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-2.72 0-4.923 2.204-4.923 4.917 0 .386.044.762.128 1.122C7.688 8.094 4.064 6.13 1.64 3.161c-.423.724-.666 1.562-.666 2.475 0 1.709.87 3.215 2.188 4.099-.807-.026-1.566-.248-2.229-.616v.062c0 2.385 1.693 4.374 3.946 4.827-.413.112-.849.171-1.296.171-.317 0-.626-.03-.927-.086.627 1.956 2.445 3.38 4.6 3.42-1.685 1.32-3.808 2.107-6.115 2.107-.397 0-.79-.023-1.175-.067 2.179 1.396 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 14.307-14.413 0-.219-.005-.437-.014-.653.986-.714 1.844-1.605 2.522-2.621z"/>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" >
+                <path d="M17 3H7C5.93913 3 4.92172 3.42143 4.17157 4.17157C3.42143 4.92172 3 5.93913 3 7V17C3 18.0609 3.42143 19.0783 4.17157 19.8284C4.92172 20.5786 5.93913 21 7 21H17C18.0609 21 19.0783 20.5786 19.8284 19.8284C20.5786 19.0783 21 18.0609 21 17V7C21 5.93913 20.5786 4.92172 19.8284 4.17157C19.0783 3.42143 18.0609 3 17 3Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M12 16C13.0609 16 14.0783 15.5786 14.8284 14.8284C15.5786 14.0783 16 13.0609 16 12C16 10.9391 15.5786 9.92172 14.8284 9.17157C14.0783 8.42143 13.0609 8 12 8C10.9391 8 9.92172 8.42143 9.17157 9.17157C8.42143 9.92172 8 10.9391 8 12C8 13.0609 8.42143 14.0783 9.17157 14.8284C9.92172 15.5786 10.9391 16 12 16V16Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M17.5 7.5C17.7652 7.5 18.0196 7.39464 18.2071 7.20711C18.3946 7.01957 18.5 6.76522 18.5 6.5C18.5 6.23478 18.3946 5.98043 18.2071 5.79289C18.0196 5.60536 17.7652 5.5 17.5 5.5C17.2348 5.5 16.9804 5.60536 16.7929 5.79289C16.6054 5.98043 16.5 6.23478 16.5 6.5C16.5 6.76522 16.6054 7.01957 16.7929 7.20711C16.9804 7.39464 17.2348 7.5 17.5 7.5Z" fill="white"/>
+                </svg>
+                
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" >
+                <path d="M8.5 6.05C9.417 5.113 10.611 4.5 12 4.5C13.4587 4.5 14.8576 5.07946 15.8891 6.11091C16.9205 7.14236 17.5 8.54131 17.5 10V17.5H15.5V10C15.5 9.07174 15.1313 8.1815 14.4749 7.52513C13.8185 6.86875 12.9283 6.5 12 6.5C11.0717 6.5 10.1815 6.86875 9.52513 7.52513C8.86875 8.1815 8.5 9.07174 8.5 10V17.5H6.5V5H8.5V6.05ZM1.5 3C1.10218 3 0.720644 2.84196 0.43934 2.56066C0.158035 2.27936 0 1.89782 0 1.5C0 1.10218 0.158035 0.720644 0.43934 0.43934C0.720644 0.158035 1.10218 0 1.5 0C1.89782 0 2.27936 0.158035 2.56066 0.43934C2.84196 0.720644 3 1.10218 3 1.5C3 1.89782 2.84196 2.27936 2.56066 2.56066C2.27936 2.84196 1.89782 3 1.5 3ZM0.5 5H2.5V17.5H0.5V5Z" fill="white"/>
+                </svg>
+                
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center text-gray-400 mt-2">
+        © Copyright Rimel 2022. All rights reserved
+      </div>
+    </footer>
+</body>
+</html>
