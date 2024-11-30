@@ -195,18 +195,21 @@ const getRelatedProduct = async function (data) {
       }`;
 
       relatedDivItemInfo.addEventListener("click", () => {
-        window.location.href = `id=${item._id}`;
+        window.location.href = `http://127.0.0.1:5500/ProductDetails/ProductDetails.html?id=${item._id}`;
       });
-      
-      // Məhsul adı və qiymətini divə əlavə etmək
+
+
+      //burda her bir elemente hansiki asagda gorsenir onlaara biz geereu add asketi elave edek
+      //onda deemeli malin id si gedmelidi , say da bir dene
+
       relatedDivItemInfo.appendChild(productTitle);
       relatedDivItemInfo.appendChild(productPrice);
 
-      // Əsas divə bütün elementləri əlavə etmək
+     
       relatedDivItem.appendChild(relatedDivItemImg);
       relatedDivItem.appendChild(relatedDivItemInfo);
 
-      // Nəticəni HTML sənədinə əlavə etmək (məsələn, müəyyən bir konteynerə)
+     
       relatedItems.appendChild(relatedDivItem);
     });
   } catch (error) {
@@ -221,6 +224,7 @@ const getProductsDetails = async (productId) => {
     );
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     const data = await response.json();
+
     document.getElementById("product-name").textContent = data.product.title;
     document.getElementById("product-price").textContent = `${parseFloat(
       data.product.price
@@ -232,9 +236,65 @@ const getProductsDetails = async (productId) => {
       : (document.getElementById("product-soldout").style.display = "block");
     getProductImages(data);
     getRelatedProduct(data);
+    clickCount(data);
   } catch (error) {
     console.error("Xeta bas verdi:", error);
   }
 };
 
 getProductsDetails(productId);
+
+const clickCount = async (data) => {
+  const prdouctcount = document.getElementById("prdouct-count");
+  let value = parseInt(prdouctcount.value);
+  let stockcount = data.product.stock;
+  const product = data.product;
+  console.log(product);
+  const minusbutton = document.getElementById("minusbutton");
+  const pilusbutton = document.getElementById("pilusbutton");
+ minusbutton.addEventListener("click", () => {
+    if (stockcount > 0) {
+      if (value > 1) {
+        value -= 1;
+        prdouctcount.value = value;
+      } else {
+        alert("Minimum count is 1");
+      }
+    }
+  });
+
+  pilusbutton.addEventListener("click", () => {
+    if (stockcount > 0) {
+      if (value < stockcount) {
+        value = value + 1;
+        prdouctcount.value = value;
+      } else {
+        alert(`Maximum  count is ${stockcount}`);
+      }
+    }
+  });
+
+  //token lazim
+  // let addBasketButton = document.getElementById("addToBasket");
+  // addBasketButton.addEventListener("click",async()=>{
+  //   const response2 = await fetch(`http://localhost:3000/api/baskets/add${product._id}`,{
+  //    method:"POST",
+  //    headers:{
+  //     "Accept":"application/json",
+  //     "Content-Type":"application/json",
+  //     "Authorization": `Bearer ${accessToken}`
+  //    },
+  //    body:JSON.stringify({
+  //     productId:product._id,
+  //     quantity:value
+  //    })
+  //   });
+
+  //   if (!response2.ok) throw new Error(`HTTP error! Status: ${response2.status}`);
+  //   const data2 =await response2.json();
+
+  //   //http://localhost:3000/api/baskets/add
+  //   // if(stockcount)
+  //   //burda da id gedecek birde value hansiki sayidir plus o pul
+  // })
+};
